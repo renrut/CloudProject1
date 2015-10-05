@@ -1,0 +1,5 @@
+TODO: 
+Get working on cloud. 
+Check for errors. 
+Sanitize user input
+Multiple client support?
