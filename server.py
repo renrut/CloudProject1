@@ -8,11 +8,10 @@ PORT = 8080
 # MyHTTPHandler inherits from BaseHTTPServer.BaseHTTPRequestHandler
 class MyHTTPHandler (BaseHTTPServer.BaseHTTPRequestHandler):
     def do_GET (s):
-        """ Respond to a GET request. """
-        print "GET request received; reading the request"
+        # "GET request received; reading the request"
         # the parameter s is the "self" param
         req = s.rfile.readline ()
-        print "Received request = ", req
+        #print "Received request = ", req
         print "path: " + s.path()
         s.send_response (200)
         s.send_header ("Content-type", "text/html")

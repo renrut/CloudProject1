@@ -7,9 +7,9 @@ class RRLoadBalancer:
     #takes in a list of servers to do scheduling on
     def __init__(self, servers):
         #if servers isn't a list, make it a list
-        self._server_list= servers if type(servers) is list else [servers]
+        self._server_list = servers if type(servers) is list else [servers]
         #index of the next server to be assigned a job
-        self._next_server=0
+        self._next_server = 0
 
     #takes in a job, passes it to the next server in the list. Job should be of the appropriate type
     def newJob(self, job):
