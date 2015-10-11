@@ -3,8 +3,10 @@ import sys
 import socket 
 
 
+#prime check fnct
 def isPrime(myPrime):
 	possibilities = int(myPrime/2)
+	#edge case 1
 	if(myPrime is 1):
 		return "Prime"
 
@@ -15,17 +17,28 @@ def isPrime(myPrime):
 	return "Prime"
 
 
+#Notes. Sockets must pass either buffer or, in this case, string
+
+
+
+#host needs to change
 host = 'localhost' 
-port = 9080 
-backlog = 5 
+#port will be 80
+port = 9080
+#5 client connections 
+backlog = 1
 size = 1024 
+#binds and listens
 s = socket.socket(socket.AF_INET, socket.SOCK_STREAM) 
 s.bind((host,port)) 
 s.listen(backlog) 
 client, address = s.accept() 
-data = "1"
+
+#Start values
+data = "0"
 prime = False
 
+#checks for prime, sends back
 while data != "-1": 
     data = client.recv(size) 
     if data and data != "-1": 

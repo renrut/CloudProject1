@@ -2,14 +2,16 @@
 import sys
 import socket 
 
+#not sure about any of this
 #nova = client.Client(VERSION, USERNAME, PASSWORD, PROJECT_ID, AUTH_URL)
 
 
 
-
+#port should change to 80
 host = 'localhost' 
-port = 10080 
+port = 8080 
 size = 1024 
+# creating new client socket and connecting it to host via port
 s = socket.socket(socket.AF_INET, socket.SOCK_STREAM) 
 input_num = 0
 s.connect((host,port))

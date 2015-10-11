@@ -1,5 +1,6 @@
 TODO: 
-Get working on cloud. 
+Get working on cloud.
 Check for errors. 
 Sanitize user input
-Multiple client support?
+Multiple client support? I can try to work on this. Probs an easy fix.
+Load Balancing
