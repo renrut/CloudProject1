@@ -8,30 +8,36 @@ import time
 
 
 def getNumber(num):
-    httpCall(str(num))
+    httpCall("isPrime"  + "/" + str(num) )
+
 
 def scaleServer(name):
-    print "scaling"
+    httpCall("scale")
 
 def httpCall (path):
+    SERVERNAME = "server2"
+    SCALETIME = 1
 
-    # "Instantiating a connection obj"
+    print "Instantiating a connection obj"
     conn = httplib.HTTPConnection ("localhost", "8080")
-    # "sending a GET request to our http server"
+    print "sending a GET request to our http server"
     start = time.time()
     conn.request ("GET", "/" + path)
     # "retrieving a response from http server"
     resp = conn.getresponse ()
     end = time.time()
-
+    print ""
     connTime = end-start
     print connTime
-
+    #Arbitrary scale value.
+    if connTime > SCALETIME:
+        scale(SERVERNAME)
     # "printing response headers"
     for hdr in resp.getheaders ():
         print hdr
     # "printing data"
     data = resp.read ()
+    print data
     # "Length of data = ", len(data)
     # data
 
