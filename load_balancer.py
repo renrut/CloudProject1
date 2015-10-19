@@ -2,11 +2,15 @@
 
 #load balancer, keeps track of all worker servers, assigns work to them in a round robin fashion
 
+import sys
+import httplib
+
 class RRLoadBalancer:
-    self._port=8080
 
     #takes in a list of servers to do scheduling on
     def __init__(self, servers):
+        self._port=9080
+
         #if servers isn't a list, make it a list
         self._server_list = servers if type(servers) is list else [servers]
         #index of the next server to be assigned a job
@@ -14,7 +18,7 @@ class RRLoadBalancer:
 
     #takes in a job, passes it to the next server in the list. Job should be of the appropriate type
     def newJob(self, job):
-        if not servers:
+        if not self._server_list:
             #no servers in list
             print "No servers available" 
             return None 
@@ -25,7 +29,7 @@ class RRLoadBalancer:
     #increment next server and mod it by the length of the list
     def _incNextServer(self):
         self._next_server+=1
-        self._incNextServer%=len(self._server_list)
+        self._next_server%=len(self._server_list)
 
     #assigns the given job to the give server
     #separate method for increased flexibility
