@@ -5,6 +5,8 @@ import BaseHTTPServer
 import primeCheck
 import sys
 import httplib
+from load_balancer import RRLoadBalancer
+import create_server
 
 HOST = "localhost"
 PORT = 8080
@@ -15,13 +17,12 @@ PRIMEPORT = 9080
 # MyHTTPHandler inherits from BaseHTTPServer.BaseHTTPRequestHandler
 class MyHTTPHandler (SimpleHTTPServer.SimpleHTTPRequestHandler):
     
+    def __init__(self):
+        self.lb=RRLoadBalancer([])
+
     #this should use the load balancer
     def primeHandler(s, num):
-        print "Instantiating a connection obj"
-        conn = httplib.HTTPConnection ("localhost", PRIMEPORT)
-        print "sending a GET request to our http server"
-        conn.request ("GET", "/" + num)
-        resp = conn.getresponse()
+        resp=self.lb.newJob(num)
         data = resp.read()
         print "data: " + data
         return data
@@ -29,8 +30,8 @@ class MyHTTPHandler (SimpleHTTPServer.SimpleHTTPRequestHandler):
 
     def scaleHandler(s):
         #TODO: Scale instance, return ip to instance
-        return "scale"
-
+        new_server=create_server.startServer("AS_TS_SERVER")
+        self.lb.addServer(new_server.networks["b16b0244-e1b5-4d36-90ff-83a0d87d8682"])
 
     def parseRequest(s, req):
         reqList = req.split("/")

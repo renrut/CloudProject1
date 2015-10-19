@@ -2,7 +2,7 @@
 import os
 import sys
 import time
-from novaclient.v2 import client
+from novaclient import client
 
 # Institution: Vanderbilt University
 # Code created for the CS4287-5287 course
@@ -10,6 +10,8 @@ from novaclient.v2 import client
 # Created: Fall 2015
 
 # The purpose of this code is to show how to create a server using the nova API.
+
+####THIS CODE MODIFIED BY ALAN SAMANTA#####
 
 # get our credentials from the environment variables
 def get_nova_creds ():
@@ -25,6 +27,8 @@ def get_nova_creds ():
     # d['tenant_id'] = os.environ['OS_TENANT_ID']
     return d
 
+ID=0
+
 def startServer(server_name):
     #initialized every time, might be bad, whatever
     creds = get_nova_creds()
@@ -39,7 +43,7 @@ def startServer(server_name):
     sgref = nova.security_groups.find (name="default")
 
     attrs = {
-        'name' : server_name,
+        'name' : server_name+str(ID),
         'image' : imageref,
         'flavor' : flavorref,
         # providing the ref this way for security group is not working
@@ -49,7 +53,7 @@ def startServer(server_name):
         # 'nics' : [{'net-id' : netref.id}]
         'nics' : [{'net-id' : 'b16b0244-e1b5-4d36-90ff-83a0d87d8682'}]
         }
-
+    ID+=1
     try:
         server = nova.servers.create (**attrs)
     except:
