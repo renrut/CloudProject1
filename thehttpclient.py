@@ -36,7 +36,7 @@ def httpCall (path):
     for hdr in resp.getheaders ():
         print hdr
     # "printing data"
-    data = resp.read ()
+    data = resp.read()
     print data
     # "Length of data = ", len(data)
     # data
