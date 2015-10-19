@@ -9,7 +9,7 @@ class RRLoadBalancer:
 
     #takes in a list of servers to do scheduling on
     def __init__(self, servers):
-        self._port=9080
+        self._port=80
 
         #if servers isn't a list, make it a list
         self._server_list = servers if type(servers) is list else [servers]
