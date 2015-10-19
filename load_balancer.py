@@ -3,7 +3,7 @@
 #load balancer, keeps track of all worker servers, assigns work to them in a round robin fashion
 
 class RRLoadBalancer:
-    self._port=80
+    self._port=8080
 
     #takes in a list of servers to do scheduling on
     def __init__(self, servers):
