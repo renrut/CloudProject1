@@ -47,7 +47,7 @@ class MyHTTPHandler (SimpleHTTPServer.SimpleHTTPRequestHandler):
 if __name__ == '__main__':
     print "Instantiating a BaseHTTPServer"
     server_class = BaseHTTPServer.HTTPServer
-    httpd = server_class ((HOST, PORT), MyHTTPHandler)
+    httpd = server_class (("10.10.3.124", 80), MyHTTPHandler)
     try:
         print "Run a BaseHTTPServer"
         httpd.serve_forever ()
