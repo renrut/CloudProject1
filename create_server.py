@@ -56,7 +56,7 @@ def startServer(server_name):
         'user-data' : "/repo/CloudProject1/user_data.sh",
         'key-pair' : "ISIS_cloud_ssh"
         }
-    ID+=1
+    
     try:
         server = nova.servers.create (**attrs)
     except:
@@ -71,5 +71,5 @@ def startServer(server_name):
         # the restful API (it does not get updated dynamically in the
         # server object we have)
         server = nova.servers.find (name=(server_name+str(ID)))
-
+    ID+=1
     return server
