@@ -52,7 +52,8 @@ def startServer(server_name):
         # I was going to do the following but does not work
         # 'nics' : [{'net-id' : netref.id}]
         'nics' : [{'net-id' : 'b16b0244-e1b5-4d36-90ff-83a0d87d8682'}],
-        'user-data' : "/repo/CloudProject1/user_data.sh"
+        'user-data' : "/repo/CloudProject1/user_data.sh",
+        'key-pair' : "ISIS_cloud_ssh"
         }
     ID+=1
     try:

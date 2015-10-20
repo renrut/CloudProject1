@@ -40,7 +40,7 @@ class MyHTTPHandler (SimpleHTTPServer.SimpleHTTPRequestHandler):
         elif reqList[1] == "scale":
             #NEED TO SCALE HERE BY CALLING ADD INSTANCE!
             #Need to store internal address
-            return scaleHandler()
+            return s.scaleHandler()
 
         else:
             #for debugging. Probs should keep in
