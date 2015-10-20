@@ -31,6 +31,7 @@ ID=0
 
 def startServer(server_name):
     #initialized every time, might be bad, whatever
+    global ID
     creds = get_nova_creds()
     try:
         nova = client.Client (**creds)
