@@ -16,7 +16,7 @@ PRIMEPORT = 9080
 
 # MyHTTPHandler inherits from BaseHTTPServer.BaseHTTPRequestHandler
 class MyHTTPHandler (SimpleHTTPServer.SimpleHTTPRequestHandler):
-    lb=RRLoadBalancer(["10.10.3.119"])
+    lb=RRLoadBalancer(["10.10.3.124"])
 
     #this should use the load balancer
     def primeHandler(self, num):
