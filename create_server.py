@@ -70,6 +70,6 @@ def startServer(server_name):
         # we need to retrieve the status of the server from
         # the restful API (it does not get updated dynamically in the
         # server object we have)
-        server = nova.servers.find (name=server_name)
+        server = nova.servers.find (name=(server_name+str(ID)))
 
     return server
