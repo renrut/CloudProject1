@@ -29,7 +29,7 @@ class MyHTTPHandler (SimpleHTTPServer.SimpleHTTPRequestHandler):
     def scaleHandler(s):
         #TODO: Scale instance, return ip to instance
         new_server=create_server.startServer("AS_TS_SERVER")
-        self.lb.addServer(new_server.networks["b16b0244-e1b5-4d36-90ff-83a0d87d8682"])
+        s.lb.addServer(new_server.networks["b16b0244-e1b5-4d36-90ff-83a0d87d8682"])
 
     def parseRequest(s, req):
         reqList = req.split("/")
