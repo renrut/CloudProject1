@@ -27,17 +27,20 @@ def httpCall (path):
     resp = conn.getresponse ()
     end = time.time()
     print ""
-    connTime = end-start
-    print connTime
-    #Arbitrary scale value.
-    if connTime > SCALETIME:
-        scaleServer(SERVERNAME)
     # "printing response headers"
-    for hdr in resp.getheaders ():
-        print hdr
     # "printing data"
-    data = resp.read()
-    print data
     # "Length of data = ", len(data)
     # data
+
+    print connTime
+        for hdr in resp.getheaders ():
+        print hdr
+
+    data = resp.read()
+    print data
+
+    #Arbitrary scale value.
+    connTime = end-start
+    if connTime > SCALETIME:
+        scaleServer(SERVERNAME)
 
