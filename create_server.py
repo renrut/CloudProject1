@@ -27,7 +27,7 @@ def get_nova_creds ():
     # d['tenant_id'] = os.environ['OS_TENANT_ID']
     return d
 
-ID=0
+ID=1
 
 def startServer(server_name):
     #initialized every time, might be bad, whatever

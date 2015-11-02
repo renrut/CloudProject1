@@ -16,7 +16,7 @@ PRIMEPORT = 9080
 
 # MyHTTPHandler inherits from BaseHTTPServer.BaseHTTPRequestHandler
 class MyHTTPHandler (SimpleHTTPServer.SimpleHTTPRequestHandler):
-    lb=RRLoadBalancer(["10.10.3.124"])
+    lb=RRLoadBalancer(["10.10.3.124", "10.10.11.13"])
 
     #this should use the load balancer
     def primeHandler(self, num):
@@ -28,8 +28,10 @@ class MyHTTPHandler (SimpleHTTPServer.SimpleHTTPRequestHandler):
 
     def scaleHandler(s):
         #TODO: Scale instance, return ip to instance
+        NETWORK_ID="internal network"
+
         new_server=create_server.startServer("AS_TS_SERVER")
-        s.lb.addServer(new_server.networks["b16b0244-e1b5-4d36-90ff-83a0d87d8682"])
+        s.lb.addServer(new_server.addresses[NETWORK_ID][0]['addr'])
 
     def parseRequest(s, req):
         reqList = req.split("/")
