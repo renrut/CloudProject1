@@ -33,7 +33,7 @@ def httpCall (path):
     # data
 
     print connTime
-        for hdr in resp.getheaders ():
+    for hdr in resp.getheaders ():
         print hdr
 
     data = resp.read()
