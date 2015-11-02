@@ -31,7 +31,7 @@ class MyHTTPHandler (SimpleHTTPServer.SimpleHTTPRequestHandler):
         NETWORK_ID="internal network"
 
         new_server=create_server.startServer("AS_TS_SERVER")
-        s.lb.addServer(new_server.addresses[NETWORK_ID][0]['addr'])
+        #s.lb.addServer(new_server.addresses[NETWORK_ID][0]['addr'])
 
     def parseRequest(s, req):
         reqList = req.split("/")
