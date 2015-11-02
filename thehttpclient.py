@@ -31,7 +31,7 @@ def httpCall (path):
     # "printing data"
     # "Length of data = ", len(data)
     # data
-
+    connTime = end-start
     print connTime
     for hdr in resp.getheaders ():
         print hdr
@@ -40,7 +40,7 @@ def httpCall (path):
     print data
 
     #Arbitrary scale value.
-    connTime = end-start
+
     if connTime > SCALETIME:
         scaleServer(SERVERNAME)
 
