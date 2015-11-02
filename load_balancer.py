@@ -22,6 +22,7 @@ class RRLoadBalancer:
             #no servers in list
             print "No servers available" 
             return None 
+        print "Assigning job to"+str(self._server_list[self._next_server])
         resp=self._assignJob(job, self._server_list[self._next_server])
         self._incNextServer()
         return resp
